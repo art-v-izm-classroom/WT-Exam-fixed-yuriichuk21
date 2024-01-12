@@ -1,3 +1,5 @@
+// Перенаправте код для калькулятора та іншої логіки сюди
+
 document.getElementById('add-button').addEventListener('click', function () {
     performOperation('+');
 });
@@ -51,12 +53,8 @@ function performOperation(operator) {
 
 function performFunction(func) {
     const op1 = parseFloat(document.getElementById('op1').value);
-    
-    const helpData = {
-        log: 'Natural logarithm (logarithm to the base e)',
-        sin: 'Sine of an angle in degrees',
-        tan: 'Tangent of an angle in degrees'
-    };
 
-    document.getElementById('content').textContent = helpData[func];
+    $ajaxUtils.sendGetRequest('path/to/server/' + func + '.json', function (data) {
+        document.getElementById('content').textContent = data[func];
+    });
 }
