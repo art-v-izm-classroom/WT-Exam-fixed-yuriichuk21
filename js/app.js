@@ -54,7 +54,7 @@ function performOperation(operator) {
 function performFunction(func) {
     const op1 = parseFloat(document.getElementById('op1').value);
 
-    $ajaxUtils.sendGetRequest('' + func + '.json', function (data) {
+    $ajaxUtils.sendGetRequest(func + '.json', function (data) {
         document.getElementById('content').textContent = data[func];
     });
 }
